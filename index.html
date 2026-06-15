@@ -62,8 +62,7 @@ body{font-family:var(--body);background:var(--offwhite);color:var(--dark);min-he
 /* ══ INVOICE PDF STYLES ══ */
 .inv-header{border:1.5px solid var(--dark);margin:8px;border-bottom:none}
 .inv-top{display:grid;grid-template-columns:120px 1fr auto;gap:0;border-bottom:1.5px solid var(--dark)}
-.inv-logo-box{border-right:1px solid var(--dark);padding:10px;display:flex;align-items:center;justify-content:center}
-.inv-logo-box img{width:90px;height:auto}
+.inv-logo-box{border-right:1px solid var(--dark);padding:0;display:flex;align-items:center;justify-content:center;background:#C0392B;min-width:108px}
 .inv-company-center{padding:8px 12px;text-align:center}
 .inv-company-center h1{font-family:var(--display);font-size:26px;font-weight:800;color:var(--red);letter-spacing:0.06em;line-height:1}
 .inv-company-center p{font-size:9px;color:var(--dark);line-height:1.6;margin-top:4px}
@@ -443,7 +442,21 @@ function render() {
     <div class="inv-header">
       <div class="inv-top">
         <div class="inv-logo-box">
-          <img src="${LOGO}" alt="SNB ENGG">
+          <svg width="108" height="108" viewBox="0 0 108 108" xmlns="http://www.w3.org/2000/svg">
+            <rect width="108" height="108" fill="#C0392B"/>
+            <!-- Fuel pump body -->
+            <rect x="30" y="34" width="32" height="44" rx="2" fill="none" stroke="#1a1a1a" stroke-width="2.8"/>
+            <!-- Screen/display on pump -->
+            <rect x="36" y="40" width="20" height="12" rx="1.5" fill="none" stroke="#1a1a1a" stroke-width="2.2"/>
+            <!-- Pump base line -->
+            <line x1="26" y1="78" x2="66" y2="78" stroke="#1a1a1a" stroke-width="2.8" stroke-linecap="round"/>
+            <!-- Nozzle arm -->
+            <path d="M62 44 Q72 44 72 52 L72 58" fill="none" stroke="#1a1a1a" stroke-width="2.8" stroke-linecap="round"/>
+            <!-- Nozzle head -->
+            <path d="M68 58 L76 58 L76 65 L68 65 Z" fill="none" stroke="#1a1a1a" stroke-width="2.4"/>
+            <!-- SNB ENGG text -->
+            <text x="54" y="96" font-family="Georgia, serif" font-size="8.5" font-weight="bold" letter-spacing="3.5" fill="#ffffff" text-anchor="middle">SNB ENGG</text>
+          </svg>
         </div>
         <div class="inv-company-center">
           <h1>SNB ENGG.</h1>
