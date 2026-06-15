@@ -255,11 +255,15 @@ body{font-family:var(--body);background:var(--offwhite);color:var(--dark);min-he
     <div class="form-section">
       <div class="section-title">Bank Details</div>
       <div class="field-row single"><div class="field"><label>Bank Name</label><input id="bankName" value="HDFC BANK" oninput="render()"></div></div>
+      <div class="field-row single"><div class="field"><label>Account Holder Name</label><input id="bankAccName" value="SNB ENGG." oninput="render()"></div></div>
       <div class="field-row">
         <div class="field"><label>Account No.</label><input id="bankAccNo" value="50200061262588" oninput="render()"></div>
         <div class="field"><label>IFSC Code</label><input id="bankIfsc" value="HDFC0001077" oninput="render()"></div>
       </div>
-      <div class="field-row single"><div class="field"><label>Branch</label><input id="bankBranch" value="BEVERLY PARK, Mira Road-E, Thane" oninput="render()"></div></div>
+      <div class="field-row">
+        <div class="field"><label>Account Type</label><input id="bankAccType" value="Current Account" oninput="render()"></div>
+        <div class="field"><label>Branch</label><input id="bankBranch" value="BEVERLY PARK, Mira Road East, Thane" oninput="render()"></div>
+      </div>
     </div>
 
     <!-- Terms -->
@@ -590,9 +594,11 @@ function render() {
         <div class="inv-bank">
           <h4>: Bank Details :</h4>
           <p>Bank Name: <strong>${g('bankName')||'HDFC BANK'}</strong></p>
-          <p>Account No: <strong>${g('bankAccNo')||'50200061262588'}</strong></p>
+          <p>Name: <strong>${g('bankAccName')||'SNB ENGG.'}</strong></p>
+          <p>A/C No.: <strong>${g('bankAccNo')||'50200061262588'}</strong></p>
           <p>IFSC Code: <strong>${g('bankIfsc')||'HDFC0001077'}</strong></p>
-          <p>Branch: ${g('bankBranch')||'BEVERLY PARK, Mira Road-E, Thane'}</p>
+          <p>Account Type: <strong>${g('bankAccType')||'Current Account'}</strong></p>
+          <p>Branch: ${g('bankBranch')||'BEVERLY PARK, Mira Road East, Thane'}</p>
         </div>
         ${terms.length?`<div style="margin-top:8px;border-top:1px solid var(--lgray);padding-top:6px">
           <h4 style="font-size:9px;font-weight:700;color:var(--dark);margin-bottom:4px">: Terms and Conditions :</h4>
@@ -630,7 +636,7 @@ function render() {
 function resetForm() {
   if(!confirm('Reset all fields?')) return;
   document.querySelectorAll('input:not([type=radio]):not([type=checkbox]),textarea').forEach(el=>{
-    const defaults={invNo:'SNB-',bankName:'HDFC BANK',bankAccNo:'50200061262588',bankIfsc:'HDFC0001077',bankBranch:'BEVERLY PARK, Mira Road-E, Thane',transport:'Courier',vehicle:'N.A'};
+    const defaults={invNo:'SNB-',bankName:'HDFC BANK',bankAccName:'SNB ENGG.',bankAccNo:'50200061262588',bankIfsc:'HDFC0001077',bankAccType:'Current Account',bankBranch:'BEVERLY PARK, Mira Road East, Thane',transport:'Courier',vehicle:'N.A'};
     el.value = defaults[el.id]||'';
   });
   document.getElementById('invDate').value=new Date().toISOString().split('T')[0];
