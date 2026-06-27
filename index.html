@@ -66,7 +66,7 @@ body{font-family:var(--body);background:var(--offwhite);color:var(--dark);min-he
 .inv-company-center{padding:8px 12px;text-align:center}
 .inv-company-center h1{font-family:var(--display);font-size:26px;font-weight:800;color:var(--red);letter-spacing:0.06em;line-height:1}
 .inv-company-center p{font-size:9px;color:var(--dark);line-height:1.6;margin-top:4px}
-.inv-copies{border-left:1px solid var(--dark);padding:8px 12px;min-width:220px}
+.inv-copies{padding:8px 12px;min-width:220px}
 .inv-copy-row{display:flex;align-items:center;gap:6px;margin-bottom:4px;font-size:9px;color:var(--dark)}
 .inv-copy-check{width:12px;height:12px;border:1.5px solid var(--dark);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:7px;color:var(--red);flex-shrink:0}
 
@@ -129,7 +129,7 @@ body{font-family:var(--body);background:var(--offwhite);color:var(--dark);min-he
 .inv-footer-right{padding:8px 10px;text-align:right}
 .inv-footer h4{font-size:9px;font-weight:700;color:var(--red);margin-bottom:4px}
 .inv-footer p{font-size:9px;color:var(--dark);line-height:1.6}
-.inv-sig-area{margin-top:28px;border-top:1px solid var(--dark);padding-top:4px;font-size:9px;color:var(--gray)}
+.inv-sig-area{margin-top:55px;border-top:1px solid var(--dark);padding-top:4px;font-size:9px;color:var(--gray)}
 .inv-eoae{margin:4px 8px;font-size:8.5px;color:var(--gray);font-style:italic}
 
 @media(max-width:1300px){
@@ -248,7 +248,10 @@ body{font-family:var(--body);background:var(--offwhite);color:var(--dark);min-he
         <div class="field"><label>PO Date</label><input id="poDate" type="date" oninput="render()"></div>
         <div class="field"><label>Vendor Code</label><input id="vendorCode" oninput="render()"></div>
       </div>
-      <div class="field-row single"><div class="field"><label>Kind Attention / Job Done At</label><input id="kindAttn" placeholder="AMBA FUELS" oninput="render()"></div></div>
+      <div class="field-row">
+        <div class="field"><label>Kind Attention</label><input id="kindAttn" placeholder="AMBA FUELS" oninput="render()"></div>
+        <div class="field"><label>Job Done At</label><input id="jobDoneAt" oninput="render()"></div>
+      </div>
     </div>
 
     <!-- GST Type -->
@@ -535,8 +538,9 @@ function render() {
       <div><strong>PO Date:</strong> ${g('poDate')?fmtDate(g('poDate')):'—'}</div>
       <div><strong>Vendor Code:</strong> ${g('vendorCode')||'—'}</div>
     </div>
-    <div style="margin:0 8px;border:1.5px solid var(--dark);border-top:none;padding:3px 12px;font-size:9px">
-      <strong>Kind Attn / Job Done At:</strong> ${g('kindAttn')||'—'}
+    <div class="inv-po-row" style="margin:0 8px;border:1.5px solid var(--dark);border-top:none;grid-template-columns:1fr 1fr">
+      <div><strong>Kind Attention:</strong> ${g('kindAttn')||'—'}</div>
+      <div><strong>Job Done At:</strong> ${g('jobDoneAt')||'—'}</div>
     </div>
 
     <!-- ITEMS TABLE -->
@@ -658,7 +662,6 @@ function render() {
     <div class="inv-footer">
       <div class="inv-footer-left">
         <p style="font-size:9px;color:var(--gray);line-height:1.6">Certified that the particulars given above are true and correct.</p>
-        <p style="font-size:8.5px;color:var(--gray);margin-top:4px">3-core 2.5 sq.mm cables required for motors + electronics. Separate copper earthing required for dispenser.</p>
       </div>
       <div class="inv-footer-right">
         <h4 style="font-size:10px;font-weight:700;color:var(--dark)">For SNB Engg.</h4>
